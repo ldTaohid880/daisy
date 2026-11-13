@@ -24,10 +24,14 @@ jobs:
       - run: ctest --test-dir packages/native/build/cpp-tests -C Release --output-on-failure
 
   python:
-    if: hashFiles('py/**/*.py') != ''
+    name: Python tooling
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v5
+      # hashFiles() is not allowed in a job-level `if`; the steps run once py/ has Python files.
       - uses: astral-sh/setup-uv@v6
+        if: hashFiles('py/**/*.py') != ''
       - run: uvx ruff check py && uvx ruff format --check py
+        if: hashFiles('py/**/*.py') != ''
       - run: uv run --project py --with pytest pytest py
+        if: hashFiles('py/**/*.py') != ''

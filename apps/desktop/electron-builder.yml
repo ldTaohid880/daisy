@@ -8,10 +8,13 @@ directories:
 files:
   - out/**
   - package.json
+  # Workspace packages are bundled into out/ by electron-vite; their source and native build folders are not shipped.
+  - '!node_modules/@daisy/**'
 asarUnpack:
   - out/main/mcp-stdio.js
 # The C++ addon for this platform/arch (packages/native, ADR 0013). Loaded from resources/native.
 # Required: the app does not start without it (ADR 0015).
+beforePack: scripts/RequireNativePrebuild.mjs
 extraResources:
   - from: ../../packages/native/prebuilds/${platform}-${arch}
     to: native
@@ -48,6 +51,8 @@ mac:
   notarize: false # true once APPLE_* secrets exist (task M00-T07)
 
 linux:
+  # The npm name (@daisy/desktop) is not a valid file name.
+  executableName: daisy
   target: [AppImage, deb]
   category: Graphics
   maintainer: Daisy contributors
