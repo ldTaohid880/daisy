@@ -23,7 +23,7 @@
 - **Status:** done
 - **Needs:** —
 - **Done when:** Run `pnpm install`; fix any range that does not resolve (electron-vite ↔ Vite 8, @vitejs/plugin-react, typescript-eslint ↔ TS 6); commit `pnpm-lock.yaml`; record pins in ADR 0008.
-- **Notes:** Two ranges fixed (electron-vite ^6, @modelcontextprotocol/node ^2.1.2); pins in ADR 0008. `pnpm-lock.yaml` is generated; it goes into the first commit in M00-T04 (the folder is not a git repo yet).
+- **Notes:** Two ranges fixed (electron-vite ^6, @modelcontextprotocol/node ^2.1.2); pins in ADR 0008. `pnpm-lock.yaml` is generated; committed in the first commit (e882f63).
 
 ### M00-T02 Make `pnpm check` green on all three OSes
 
@@ -41,9 +41,10 @@
 
 ### M00-T04 Create the GitHub repository and protect main
 
-- **Status:** todo
+- **Status:** done
 - **Needs:** M00-T02
 - **Done when:** Public repo `daisy`; replace OWNER_PLACEHOLDER in electron-builder.yml and CODEOWNERS; branch protection: PR required, CI required, squash only; enable private vulnerability reporting, Dependabot, CodeQL.
+- **Notes:** Public repo https://github.com/ldTaohid880/daisy. Owner set in electron-builder.yml and CODEOWNERS. `main` protected: PR required (0 approvals, solo maintainer), all CI jobs + PR title required, strict up-to-date, linear history, conversation resolution, no force push or delete, enforced for admins. Squash merge only (title = PR title), branches deleted on merge. Private vulnerability reporting, Dependabot alerts and security fixes on; Dependabot version updates and CodeQL run from `.github/`.
 
 ### M00-T05 First CI run and release dry run
 

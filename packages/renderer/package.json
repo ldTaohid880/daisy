@@ -11,7 +11,7 @@
     "typecheck": "tsc -p tsconfig.json",
     "test": "vitest run --passWithNoTests",
     "clean": "node ../../scripts/clean.ts .",
-    "test:browser": "vitest run --config vitest.browser.config.ts"
+    "test:browser": "vitest run --config vitest.browser.config.ts --passWithNoTests"
   },
   "dependencies": {
     "@daisy/css": "workspace:*",

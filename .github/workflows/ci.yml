@@ -104,6 +104,8 @@ jobs:
       - run: pnpm package
         env:
           CSC_IDENTITY_AUTO_DISCOVERY: false
+          # Every arch the installers target needs its addon (ADR 0015); same as release.yml.
+          DAISY_NATIVE_ARCHS: ${{ runner.os == 'Windows' && 'x64,arm64' || 'x64' }}
       - uses: actions/upload-artifact@v4
         with:
           name: daisy-${{ matrix.os }}
