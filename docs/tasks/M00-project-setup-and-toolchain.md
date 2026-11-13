@@ -27,10 +27,10 @@
 
 ### M00-T02 Make `pnpm check` green on all three OSes
 
-- **Status:** in progress
+- **Status:** done
 - **Needs:** M00-T01
 - **Done when:** Format, lint, check:deps, typecheck and unit tests pass locally on Windows (owner PC) and in CI on macOS/Linux.
-- **Notes:** Green on Windows (owner PC). macOS/Linux wait for CI (M00-T04/T05).
+- **Notes:** Green on Windows locally; `pnpm check` passed on Windows, macOS and Linux runners in the release dry run, and the CI check job (Linux) is required on `main`.
 
 ### M00-T03 Run the app and the first e2e test
 
@@ -48,9 +48,10 @@
 
 ### M00-T05 First CI run and release dry run
 
-- **Status:** todo
+- **Status:** done
 - **Needs:** M00-T04
 - **Done when:** CI green on a PR; push tag `v0.1.0-alpha.0` from a branch → draft release with Windows, macOS and Linux artifacts; delete it afterwards.
+- **Notes:** CI green on PR #6. Tag `v0.1.0-alpha.0` from a branch (version set to 0.1.0-alpha.0) produced a draft release with Windows NSIS x64/arm64, macOS dmg+zip arm64/x64, Linux AppImage+deb and `latest*.yml`; deleted afterwards. Fixes: release fails when the tag does not match the app version; empty signing secrets are unset (macOS read an empty `CSC_LINK` as a path).
 
 ### M00-T06 App icon and product identity
 

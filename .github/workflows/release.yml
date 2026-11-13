@@ -25,9 +25,26 @@ jobs:
         with:
           node-version-file: .nvmrc
           cache: pnpm
+      - name: Tag matches the app version
+        if: github.ref_type == 'tag'
+        shell: bash
+        run: |
+          version="v$(node -p "require('./apps/desktop/package.json').version")"
+          if [ "$version" != "$GITHUB_REF_NAME" ]; then
+            echo "::error::Tag $GITHUB_REF_NAME does not match apps/desktop/package.json ($version)"
+            exit 1
+          fi
       - run: pnpm install --frozen-lockfile
       - run: pnpm check
-      - run: pnpm --filter @daisy/desktop release
+      - name: Build and upload installers
+        shell: bash
+        # electron-builder reads an empty CSC_LINK as a path (macOS: "apps/desktop not a file"), so variables
+        # whose secret is not set are removed. Unsigned until M00-T07 sets the secrets.
+        run: |
+          for name in CSC_LINK CSC_KEY_PASSWORD APPLE_ID APPLE_APP_SPECIFIC_PASSWORD APPLE_TEAM_ID; do
+            if [ -z "${!name}" ]; then unset "$name"; fi
+          done
+          pnpm --filter @daisy/desktop release
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           # Signing: empty secrets produce unsigned builds (fine for alpha).
