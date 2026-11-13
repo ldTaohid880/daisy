@@ -1,0 +1,25 @@
+{
+  "name": "@daisy/project-fs",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Project folders on disk: open, save, autosave, versions, recovery, watching, writing exports.",
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "scripts": {
+    "typecheck": "tsc -p tsconfig.json",
+    "test": "vitest run --passWithNoTests",
+    "clean": "node ../../scripts/clean.ts ."
+  },
+  "dependencies": {
+    "@daisy/di": "workspace:*",
+    "@daisy/export": "workspace:*",
+    "@daisy/ipc": "workspace:*",
+    "@daisy/model": "workspace:*"
+  },
+  "devDependencies": {
+    "@daisy/test-utils": "workspace:*",
+    "@types/node": "^24.10.0"
+  }
+}

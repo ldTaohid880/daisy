@@ -1,0 +1,23 @@
+{
+  "name": "@daisy/ipc",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Typed contracts between the Electron main process and the renderer.",
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "scripts": {
+    "typecheck": "tsc -p tsconfig.json",
+    "test": "vitest run --passWithNoTests",
+    "clean": "node ../../scripts/clean.ts ."
+  },
+  "dependencies": {
+    "@daisy/di": "workspace:*",
+    "@daisy/model": "workspace:*",
+    "zod": "^4.1.0"
+  },
+  "devDependencies": {
+    "@daisy/test-utils": "workspace:*"
+  }
+}

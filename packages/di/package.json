@@ -1,0 +1,15 @@
+{
+  "name": "@daisy/di",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Dependency injection: typed tokens and a small container. Every Daisy class gets its collaborators from here.",
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "scripts": {
+    "typecheck": "tsc -p tsconfig.json",
+    "test": "vitest run --passWithNoTests",
+    "clean": "node ../../scripts/clean.ts ."
+  }
+}

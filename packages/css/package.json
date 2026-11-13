@@ -1,0 +1,25 @@
+{
+  "name": "@daisy/css",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "description": "CSS generation: one generator for canvas and export.",
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "scripts": {
+    "typecheck": "tsc -p tsconfig.json",
+    "test": "vitest run --passWithNoTests",
+    "clean": "node ../../scripts/clean.ts .",
+    "test:browser": "vitest run --config vitest.browser.config.ts"
+  },
+  "dependencies": {
+    "@daisy/di": "workspace:*",
+    "@daisy/model": "workspace:*"
+  },
+  "devDependencies": {
+    "@daisy/test-utils": "workspace:*",
+    "@vitest/browser-playwright": "^4.1.0",
+    "playwright": "^1.57.0"
+  }
+}

@@ -1,0 +1,12 @@
+name: Bug
+description: Something does not work as PLAN.md or the designs say
+labels: [bug]
+body:
+  - type: textarea
+    attributes: { label: What happened, description: Steps, what you expected, what you saw }
+    validations: { required: true }
+  - type: input
+    attributes: { label: Daisy version and OS }
+    validations: { required: true }
+  - type: textarea
+    attributes: { label: Spec reference, description: PLAN.md / UI_DESIGN_PLAN.md section or board, if known }

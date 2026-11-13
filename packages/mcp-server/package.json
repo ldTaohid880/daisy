@@ -1,0 +1,27 @@
+{
+  "name": "@daisy/mcp-server",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Daisy's MCP server so AI apps (Claude Code, Cursor…) can read and edit the open project.",
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "scripts": {
+    "typecheck": "tsc -p tsconfig.json",
+    "test": "vitest run --passWithNoTests",
+    "clean": "node ../../scripts/clean.ts ."
+  },
+  "dependencies": {
+    "@daisy/di": "workspace:*",
+    "@daisy/ipc": "workspace:*",
+    "@daisy/model": "workspace:*",
+    "@modelcontextprotocol/node": "^2.1.2",
+    "@modelcontextprotocol/server": "^2.4.0",
+    "zod": "^4.1.0"
+  },
+  "devDependencies": {
+    "@daisy/test-utils": "workspace:*",
+    "@types/node": "^24.10.0"
+  }
+}

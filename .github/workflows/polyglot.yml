@@ -1,0 +1,33 @@
+name: C++ core and Python
+
+on:
+  pull_request:
+    paths: ['packages/native/cpp/**', 'py/**', '.github/workflows/polyglot.yml']
+  push:
+    branches: [main]
+    paths: ['packages/native/cpp/**', 'py/**']
+
+permissions:
+  contents: read
+
+jobs:
+  cpp:
+    name: C++ core tests (${{ matrix.os }})
+    strategy:
+      fail-fast: false
+      matrix: { os: [ubuntu-latest, windows-latest, macos-latest] }
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v5
+      - run: cmake -S packages/native/cpp -B packages/native/build/cpp-tests -DDAISY_BUILD_ADDON=OFF -DCMAKE_BUILD_TYPE=Release
+      - run: cmake --build packages/native/build/cpp-tests --config Release
+      - run: ctest --test-dir packages/native/build/cpp-tests -C Release --output-on-failure
+
+  python:
+    if: hashFiles('py/**/*.py') != ''
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - uses: astral-sh/setup-uv@v6
+      - run: uvx ruff check py && uvx ruff format --check py
+      - run: uv run --project py --with pytest pytest py

@@ -1,0 +1,51 @@
+{
+  "name": "daisy",
+  "private": true,
+  "version": "0.0.0",
+  "description": "Daisy: a visual editor for real HTML and CSS websites.",
+  "license": "MIT",
+  "type": "module",
+  "packageManager": "pnpm@10.20.0",
+  "engines": {
+    "node": ">=24.11 <25",
+    "pnpm": ">=10"
+  },
+  "scripts": {
+    "dev": "pnpm --filter @daisy/desktop dev",
+    "build": "turbo run build",
+    "typecheck": "turbo run typecheck",
+    "lint": "eslint . --max-warnings=0",
+    "lint:fix": "eslint . --fix",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "test": "turbo run test",
+    "test:browser": "turbo run test:browser",
+    "test:e2e": "pnpm --filter @daisy/desktop test:e2e",
+    "check:deps": "node scripts/check-deps.ts",
+    "check:tasks": "node scripts/check-tasks.ts",
+    "check": "pnpm format:check && pnpm lint && pnpm check:deps && pnpm typecheck && pnpm test",
+    "package": "pnpm --filter @daisy/desktop package",
+    "new:adr": "node scripts/new-adr.ts",
+    "new:package": "node scripts/new-package.ts",
+    "clean": "turbo run clean && node scripts/clean.ts"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.39.0",
+    "@types/node": "^24.10.0",
+    "eslint": "^9.39.0",
+    "eslint-config-prettier": "^10.1.0",
+    "eslint-plugin-react-hooks": "^7.0.0",
+    "globals": "^16.5.0",
+    "prettier": "^3.6.0",
+    "turbo": "^2.6.0",
+    "typescript": "~6.0.2",
+    "typescript-eslint": "^8.46.0",
+    "vitest": "^4.1.0"
+  },
+  "pnpm": {
+    "onlyBuiltDependencies": [
+      "electron",
+      "esbuild"
+    ]
+  }
+}

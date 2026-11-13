@@ -1,0 +1,58 @@
+# Packaging and publishing. See docs/engineering/RELEASING.md.
+appId: org.daisy.editor
+productName: Daisy
+copyright: Copyright © Daisy contributors
+directories:
+  output: release/${version}
+  buildResources: build
+files:
+  - out/**
+  - package.json
+asarUnpack:
+  - out/main/mcp-stdio.js
+# The C++ addon for this platform/arch (packages/native, ADR 0013). Loaded from resources/native.
+# Required: the app does not start without it (ADR 0015).
+extraResources:
+  - from: ../../packages/native/prebuilds/${platform}-${arch}
+    to: native
+    filter: ['*.node']
+artifactName: ${productName}-${version}-${os}-${arch}.${ext}
+publish:
+  provider: github
+  owner: ldTaohid880
+  repo: daisy
+  releaseType: draft
+
+win:
+  target:
+    - target: nsis
+      arch: [x64, arm64]
+  # Signing: set CSC_LINK / CSC_KEY_PASSWORD (or Azure Trusted Signing) in CI secrets.
+nsis:
+  oneClick: false
+  perMachine: false
+  allowToChangeInstallationDirectory: true
+  deleteAppDataOnUninstall: false
+
+mac:
+  target:
+    - target: dmg
+      arch: [arm64, x64]
+    - target: zip
+      arch: [arm64, x64]
+  category: public.app-category.graphics-design
+  hardenedRuntime: true
+  gatekeeperAssess: false
+  entitlements: build/entitlements.mac.plist
+  entitlementsInherit: build/entitlements.mac.plist
+  notarize: false # true once APPLE_* secrets exist (task M00-T07)
+
+linux:
+  target: [AppImage, deb]
+  category: Graphics
+  maintainer: Daisy contributors
+
+fileAssociations:
+  - ext: daisy
+    name: Daisy project file
+    role: Editor

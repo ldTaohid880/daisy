@@ -1,0 +1,23 @@
+{
+  "name": "@daisy/html",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "description": "HTML generation for export and preview.",
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "scripts": {
+    "typecheck": "tsc -p tsconfig.json",
+    "test": "vitest run --passWithNoTests",
+    "clean": "node ../../scripts/clean.ts ."
+  },
+  "dependencies": {
+    "@daisy/css": "workspace:*",
+    "@daisy/di": "workspace:*",
+    "@daisy/model": "workspace:*"
+  },
+  "devDependencies": {
+    "@daisy/test-utils": "workspace:*"
+  }
+}

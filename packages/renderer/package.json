@@ -1,0 +1,27 @@
+{
+  "name": "@daisy/renderer",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "description": "The imperative CanvasRenderer that writes real DOM into the sandboxed edit frame, plus hit testing and measurement.",
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "scripts": {
+    "typecheck": "tsc -p tsconfig.json",
+    "test": "vitest run --passWithNoTests",
+    "clean": "node ../../scripts/clean.ts .",
+    "test:browser": "vitest run --config vitest.browser.config.ts"
+  },
+  "dependencies": {
+    "@daisy/css": "workspace:*",
+    "@daisy/di": "workspace:*",
+    "@daisy/model": "workspace:*",
+    "dompurify": "^3.3.0"
+  },
+  "devDependencies": {
+    "@daisy/test-utils": "workspace:*",
+    "@vitest/browser-playwright": "^4.1.0",
+    "playwright": "^1.57.0"
+  }
+}

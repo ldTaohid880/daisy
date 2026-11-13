@@ -1,0 +1,51 @@
+/*
+ * Daisy design tokens. Source of truth: UI_DESIGN_PLAN.md chapter 9 (9.9 token table, 9.2 light theme).
+ * Change a value here only together with the plan.
+ */
+:root,
+[data-theme='dark'] {
+  --bg-titlebar: #141414;
+  --bg-options: #1b1b1b;
+  --bg-chrome: #181818;
+  --bg-panel: #1f1f1f;
+  --bg-control: #2a2a2a;
+  --bg-workspace: #2a2a2a;
+  --bg-popover: #262626;
+  --border: #303030;
+  --border-strong: #454545;
+  --text: #e8e8e8;
+  --text-secondary: #a8a8a8;
+  --text-muted: #939393;
+  --accent: #2f80ed; /* selection and active states only */
+  --accent-fill: #246bcb; /* behind white text */
+  --state: #a371f7; /* state mode cues only */
+  --responsive: #d29922; /* screen-size mode cues only */
+  --layout: #1a9284;
+  --success: #3fb950;
+  --danger: #f85149;
+  --scrim: rgba(0, 0, 0, 0.55);
+
+  --font-ui: Inter, system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, monospace;
+  --text-ui: 12px;
+  --control-h: 24px;
+  --capsule-h: 28px;
+  --radius-field: 2px;
+  --radius-badge: 3px;
+  --radius-popover: 6px;
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --popover-w: 328px;
+}
+
+[data-theme='light'] {
+  --bg-titlebar: #eeeeee;
+  --bg-options: #f7f7f7;
+  --bg-control: #f0f0f0;
+  --bg-popover: #ffffff;
+  --border-strong: #d4d4d4;
+  --scrim: rgba(0, 0, 0, 0.28);
+  /* Remaining light values: UI_DESIGN_PLAN.md 9.2 — complete them in task M01-T13. */
+}

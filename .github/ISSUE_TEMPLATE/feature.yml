@@ -1,0 +1,11 @@
+name: Feature or change
+description: Propose something not in the plans yet
+labels: [proposal]
+body:
+  - type: textarea
+    attributes: { label: Problem, description: Who needs it and why }
+    validations: { required: true }
+  - type: textarea
+    attributes: { label: Proposal, description: Behaviour, screens, CSS it would write }
+  - type: textarea
+    attributes: { label: Spec impact, description: Sections of PLAN.md / UI_DESIGN_PLAN.md to change }

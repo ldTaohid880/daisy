@@ -1,0 +1,31 @@
+name: Nightly
+
+on:
+  schedule:
+    - cron: '17 21 * * *' # 03:17 in Dhaka
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  e2e:
+    name: e2e ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [windows-latest, macos-latest, ubuntu-latest]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v5
+      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v5
+        with:
+          node-version-file: .nvmrc
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm build
+      - if: runner.os == 'Linux'
+        run: xvfb-run --auto-servernum pnpm test:e2e
+      - if: runner.os != 'Linux'
+        run: pnpm test:e2e

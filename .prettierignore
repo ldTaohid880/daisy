@@ -1,0 +1,8 @@
+pnpm-lock.yaml
+**/dist
+**/out
+**/release
+**/coverage
+design-src
+PLAN.md
+UI_DESIGN_PLAN.md

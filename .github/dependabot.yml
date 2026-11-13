@@ -1,0 +1,34 @@
+version: 2
+updates:
+  - package-ecosystem: npm
+    directory: /
+    schedule:
+      interval: weekly
+      day: monday
+    open-pull-requests-limit: 10
+    groups:
+      electron:
+        patterns: ['electron', 'electron-*', '@electron/*']
+      build-tools:
+        patterns:
+          [
+            'vite',
+            'vitest',
+            '@vitest/*',
+            '@vitejs/*',
+            'turbo',
+            'typescript',
+            'typescript-eslint',
+            'eslint*',
+            'prettier',
+          ]
+      react:
+        patterns: ['react', 'react-dom', '@types/react*', 'radix-ui']
+  - package-ecosystem: pip
+    directory: /py
+    schedule:
+      interval: weekly
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: monthly

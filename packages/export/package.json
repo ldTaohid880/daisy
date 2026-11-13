@@ -1,0 +1,25 @@
+{
+  "name": "@daisy/export",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Builds the exported site as an in-memory file map; writing to disk is project-fs's job.",
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "scripts": {
+    "typecheck": "tsc -p tsconfig.json",
+    "test": "vitest run --passWithNoTests",
+    "clean": "node ../../scripts/clean.ts ."
+  },
+  "dependencies": {
+    "@daisy/css": "workspace:*",
+    "@daisy/di": "workspace:*",
+    "@daisy/html": "workspace:*",
+    "@daisy/model": "workspace:*",
+    "fflate": "^0.8.2"
+  },
+  "devDependencies": {
+    "@daisy/test-utils": "workspace:*"
+  }
+}

@@ -1,0 +1,39 @@
+{
+  "_comment": "Allowed workspace dependencies. Change only with an ADR. Checked by scripts/check-deps.ts.",
+  "packages": {
+    "@daisy/di": [],
+    "@daisy/model": ["@daisy/di"],
+    "@daisy/css": ["@daisy/di", "@daisy/model"],
+    "@daisy/html": ["@daisy/di", "@daisy/model", "@daisy/css"],
+    "@daisy/export": ["@daisy/di", "@daisy/model", "@daisy/css", "@daisy/html"],
+    "@daisy/ipc": ["@daisy/di", "@daisy/model"],
+    "@daisy/renderer": ["@daisy/di", "@daisy/model", "@daisy/css"],
+    "@daisy/ui": ["@daisy/di"],
+    "@daisy/editor": [
+      "@daisy/di",
+      "@daisy/model",
+      "@daisy/css",
+      "@daisy/html",
+      "@daisy/export",
+      "@daisy/ipc",
+      "@daisy/renderer",
+      "@daisy/ui"
+    ],
+    "@daisy/project-fs": ["@daisy/di", "@daisy/model", "@daisy/ipc", "@daisy/export", "@daisy/native"],
+    "@daisy/mcp-server": ["@daisy/di", "@daisy/model", "@daisy/ipc"],
+    "@daisy/test-utils": ["@daisy/di", "@daisy/model"],
+    "@daisy/desktop": [
+      "@daisy/di",
+      "@daisy/editor",
+      "@daisy/export",
+      "@daisy/ipc",
+      "@daisy/mcp-server",
+      "@daisy/model",
+      "@daisy/project-fs",
+      "@daisy/ui",
+      "@daisy/native"
+    ],
+    "@daisy/native": ["@daisy/di"]
+  },
+  "devOnly": ["@daisy/test-utils"]
+}

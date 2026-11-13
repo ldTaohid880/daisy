@@ -1,0 +1,24 @@
+{
+  "name": "@daisy/native",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Daisy's C++ core as a Node-API addon, with a pure-Node fallback. Main process only.",
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "scripts": {
+    "build": "node scripts/build-native.ts",
+    "typecheck": "tsc -p tsconfig.json",
+    "test": "vitest run --passWithNoTests",
+    "test:cpp": "cmake -S cpp -B build/cpp-tests -DDAISY_BUILD_ADDON=OFF && cmake --build build/cpp-tests --config Release && ctest --test-dir build/cpp-tests -C Release --output-on-failure",
+    "clean": "node ../../scripts/clean.ts . build prebuilds"
+  },
+  "dependencies": {
+    "@daisy/di": "workspace:*"
+  },
+  "devDependencies": {
+    "@types/node": "^24.10.0",
+    "cmake-js": "^7.3.1"
+  }
+}
