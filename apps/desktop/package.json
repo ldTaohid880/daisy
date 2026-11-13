@@ -1,7 +1,7 @@
 {
   "name": "@daisy/desktop",
   "productName": "Daisy",
-  "version": "0.1.0",
+  "version": "0.1.0-alpha.0",
   "private": true,
   "description": "Daisy: a visual editor for real HTML and CSS websites.",
   "author": {

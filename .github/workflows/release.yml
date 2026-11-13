@@ -25,6 +25,15 @@ jobs:
         with:
           node-version-file: .nvmrc
           cache: pnpm
+      - name: Tag matches the app version
+        if: github.ref_type == 'tag'
+        shell: bash
+        run: |
+          version="v$(node -p "require('./apps/desktop/package.json').version")"
+          if [ "$version" != "$GITHUB_REF_NAME" ]; then
+            echo "::error::Tag $GITHUB_REF_NAME does not match apps/desktop/package.json ($version)"
+            exit 1
+          fi
       - run: pnpm install --frozen-lockfile
       - run: pnpm check
       - run: pnpm --filter @daisy/desktop release
