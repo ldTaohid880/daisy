@@ -55,10 +55,10 @@
 
 ### M00-T06 App icon and product identity
 
-- **Status:** in review
+- **Status:** done
 - **Needs:** —
 - **Done when:** Icons in apps/desktop/build (ico, icns, png) from the Daisy mark on the design canvas; appId confirmed.
-- **Notes:** Icons generated from the brand mark by `py/daisy_tools/icons/app_icon.py` (tile radius, ring and glyph at the mark's proportions, tokens from 9.2): `icon.svg`, `icon.png` (1024), `icon.ico` (16–256). No `.icns` in the repo: ImageMagick cannot write it and electron-builder converts `icon.png` on macOS. Waiting for the owner to confirm the appId (`org.daisy.editor`).
+- **Notes:** Icons generated from the brand mark by `py/daisy_tools/icons/app_icon.py` (tile radius, ring and glyph at the mark's proportions, tokens from 9.2): `icon.svg`, `icon.png` (1024), `icon.ico` (16–256). No `.icns` in the repo: ImageMagick cannot write it and electron-builder converts `icon.png` on macOS. appId `org.daisy.editor` confirmed by the owner (2026-11-14).
 
 ### M00-T07 Signing accounts (can run in parallel with M01+)
 
