@@ -3,7 +3,7 @@
 - **Goal:** Every menu, search, preference and theme from the designs.
 - **Source:** new (not in PLAN.md)
 - **Spec:** UI_DESIGN_PLAN.md 3.3, 7.5, 9.2
-- **Designs:** D-38, D-40, D-48, D-49, D-50, D-51, D-33, D-33b–d, D-34
+- **Designs:** D-38, D-40, D-48, D-49, D-50, D-51, D-33, D-33b–d, D-34, D-52 (item 7)
 - **Packages:** editor, ui, desktop
 - **Code style:** ADR 0011 — where PLAN.md names functions (`createEmptyDocument`, `generateCss`, `insertNode`…), build them as classes and methods with injected dependencies.
 
@@ -65,3 +65,9 @@
 - **Status:** todo
 - **Needs:** M20-T07
 - **Done when:** D-34 rules.
+
+### M20-T09 Update status and errors
+
+- **Status:** todo
+- **Needs:** M20-T01
+- **Done when:** PLAN.md 12.8 and D-52 item 7 are implemented. `UpdateService` reports every update result over an IPC event (`daisy-ipc-channel` skill) instead of only logging. The editor shows the start-up notice, the About Daisy warning state and the red download/install notice, each with Try again and Details. Tests: unit tests for mapping errors to kinds, and e2e with a fake update server for offline and missing-config. Needs the D-52 item 7 screen from Claude Design before the UI is built.

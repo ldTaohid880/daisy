@@ -66,6 +66,7 @@
 - **Status:** todo
 - **Needs:** M21-T02
 - **Done when:** `mcp-stdio` entry forwards stdio to the running app; included in the package; quick-setup "Local app (stdio)".
+- **Constraint:** the packaged app has the `RunAsNode` fuse off (M00-T08), so the bridge cannot run as `Daisy --` with `ELECTRON_RUN_AS_NODE`. Pick another launch (e.g. a Daisy command-line switch handled by the main process, or a utility process) and record it in an ADR.
 
 ### M21-T09 MCP end-to-end tests
 

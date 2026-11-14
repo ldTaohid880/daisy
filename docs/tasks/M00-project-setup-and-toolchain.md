@@ -55,9 +55,10 @@
 
 ### M00-T06 App icon and product identity
 
-- **Status:** todo
+- **Status:** done
 - **Needs:** —
 - **Done when:** Icons in apps/desktop/build (ico, icns, png) from the Daisy mark on the design canvas; appId confirmed.
+- **Notes:** Icons generated from the brand mark by `py/daisy_tools/icons/app_icon.py` (tile radius, ring and glyph at the mark's proportions, tokens from 9.2): `icon.svg`, `icon.png` (1024), `icon.ico` (16–256). No `.icns` in the repo: ImageMagick cannot write it and electron-builder converts `icon.png` on macOS. appId `org.daisy.editor` confirmed by the owner (2026-11-14).
 
 ### M00-T07 Signing accounts (can run in parallel with M01+)
 
@@ -67,9 +68,10 @@
 
 ### M00-T08 Electron Fuses and packaging hardening
 
-- **Status:** todo
+- **Status:** done
 - **Needs:** M00-T03
 - **Done when:** Add @electron/fuses in an afterPack hook (docs/architecture/SECURITY.md list); verify the packaged app still starts.
+- **Notes:** Used electron-builder's built-in `electronFuses` instead of an `@electron/fuses` afterPack hook (same library, no new dependency, correct order with signing). Verified on a Windows x64 package: fuses read back as set; the app starts, shows its version and loads the native addon. Playwright cannot attach to a fused build (inspect is off), so the check uses Chromium's remote-debugging port.
 
 ### M00-T09 Add PLAN.md pointers to superseding ADRs
 

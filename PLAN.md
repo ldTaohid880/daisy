@@ -2058,7 +2058,17 @@ thumbnail.png
 
 ---
 
-## 13. Custom Code and Security
+### 12.8 App updates
+
+Daisy updates itself from GitHub Releases (electron-updater in the main process; ADR 0004, docs/engineering/RELEASING.md). An automatic check runs once at start in packaged builds; Help › Check for updates runs one on demand. Downloads happen in the background and install when Daisy quits.
+
+Update problems are never silent (AGENTS.md 3c; design UI_DESIGN_PLAN.md D-52 item 7):
+
+- The main process sends every update result to the editor as an IPC event: checking, up to date, available (version), downloaded, and **failed** with a kind (`offline`, `server`, `missing-config`, `download`, `install`) and the error text.
+- A failed **automatic** check shows the quiet notice once per start; it never blocks editing or covers a dialog. A failed **on-demand** check shows the warning state in About Daisy with Try again and Details. A failed **download or install** shows the red notice with Try again; the running version keeps working.
+- Details shows the raw error text, copyable for Report a problem. Nothing is retried in the background without the user pressing Try again; the next automatic check is the next start.
+
+
 
 ### 13.1 What users can add
 

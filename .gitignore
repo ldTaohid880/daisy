@@ -25,3 +25,5 @@ design-src/out/
 py/.venv/
 __pycache__/
 *.pyc
+.pytest_cache/
+.ruff_cache/

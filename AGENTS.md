@@ -80,7 +80,18 @@ pnpm --filter @daisy/<pkg> test   # one package
    `daisy-property-group`, `daisy-ui-component`, `daisy-ipc-channel`, `daisy-mcp-tool`.
 4. Tests with the code (docs/engineering/TESTING.md). A visual edit is tested by its exported code.
 5. `pnpm check` must pass. UI work: compare with the board (`ui-fidelity-reviewer` subagent).
-6. Set the task to `done`, update docs you affected, open a PR with a Conventional Commit title.
+6. Set the task to `done`, update docs you affected, and commit locally with a Conventional Commit message.
+
+### Batch pushes (the owner's rule)
+
+CI takes long, so do not push or open a PR after every task.
+
+- Work on a local branch, one commit per task. Verify each task **locally**: `pnpm check`, plus
+  `pnpm build && pnpm test:e2e` when the app or main process changed, `pnpm test:browser` for css/renderer,
+  and the native build/tests when `packages/native` changed.
+- Push and open **one PR after 3–4 tasks** (or sooner when the owner asks, or when a change can only be
+  verified in CI — e.g. another OS, release or workflow changes). The PR lists every task it completes.
+- Do not wait on CI between tasks; keep going locally. Fix CI failures on the batch PR.
 
 ## 5. Definition of done
 

@@ -11,7 +11,7 @@ exposes an MCP server. These are the layers; changing any of them needs an ADR.
 - Navigation and `window.open` are blocked; http(s) links open in the system browser.
 - All permission requests are denied by default.
 - Electron is kept on a supported major (latest three); Dependabot raises updates weekly.
-- Electron Fuses are set at packaging time: disable `RunAsNode`, `EnableNodeOptionsEnvironmentVariable`, `EnableNodeCliInspectArguments`; enable `OnlyLoadAppFromAsar` and cookie encryption (task M00-T08).
+- Electron Fuses are set at packaging time by electron-builder's `electronFuses` (apps/desktop/electron-builder.yml): disable `RunAsNode`, `EnableNodeOptionsEnvironmentVariable`, `EnableNodeCliInspectArguments`; enable `OnlyLoadAppFromAsar` and cookie encryption (task M00-T08). Consequences: the packaged app ignores `ELECTRON_RUN_AS_NODE`, `NODE_OPTIONS` and `--inspect`, so Playwright's `_electron.launch` cannot drive a packaged build (e2e runs against `out/`).
 
 ## Edit frame (PLAN.md 13.3)
 
