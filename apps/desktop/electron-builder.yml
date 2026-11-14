@@ -19,6 +19,14 @@ extraResources:
   - from: ../../packages/native/prebuilds/${platform}-${arch}
     to: native
     filter: ['*.node']
+# Electron Fuses, flipped in the packaged binary (docs/architecture/SECURITY.md, M00-T08).
+# runAsNode off: ELECTRON_RUN_AS_NODE is ignored, so the M21 stdio bridge cannot use it.
+electronFuses:
+  runAsNode: false
+  enableNodeOptionsEnvironmentVariable: false
+  enableNodeCliInspectArguments: false
+  onlyLoadAppFromAsar: true
+  enableCookieEncryption: true
 artifactName: ${productName}-${version}-${os}-${arch}.${ext}
 publish:
   provider: github

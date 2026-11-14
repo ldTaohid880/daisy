@@ -67,9 +67,10 @@
 
 ### M00-T08 Electron Fuses and packaging hardening
 
-- **Status:** todo
+- **Status:** done
 - **Needs:** M00-T03
 - **Done when:** Add @electron/fuses in an afterPack hook (docs/architecture/SECURITY.md list); verify the packaged app still starts.
+- **Notes:** Used electron-builder's built-in `electronFuses` instead of an `@electron/fuses` afterPack hook (same library, no new dependency, correct order with signing). Verified on a Windows x64 package: fuses read back as set; the app starts, shows its version and loads the native addon. Playwright cannot attach to a fused build (inspect is off), so the check uses Chromium's remote-debugging port.
 
 ### M00-T09 Add PLAN.md pointers to superseding ADRs
 
