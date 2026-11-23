@@ -18,7 +18,7 @@
     "@daisy/di": "workspace:*"
   },
   "devDependencies": {
-    "@types/node": "^24.10.0",
+    "@types/node": "^26.6.6",
     "cmake-js": "^7.3.1"
   }
 }
