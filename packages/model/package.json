@@ -14,7 +14,7 @@
   },
   "dependencies": {
     "@daisy/di": "workspace:*",
-    "immer": "^10.2.0",
+    "immer": "^11.2.10",
     "nanoid": "^5.1.0",
     "zod": "^4.1.0"
   }
